@@ -106,7 +106,7 @@ class _SignInState extends State<SignIn> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GetStartedScreen()));
+                              builder: (context) => const GetStartedScreen()));
                     }),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.06,

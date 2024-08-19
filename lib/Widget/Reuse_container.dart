@@ -21,7 +21,7 @@ class SplashContainer extends StatelessWidget {
             child: Text(
               textAlign: TextAlign.center,
               subtitle,
-              style: const TextStyle(fontSize: 16, color: Color(0xfffA8A8A9)),
+              style: const TextStyle(fontSize: 16, color: Color(0xfffa8a8a9)),
             ),
           )
         ],

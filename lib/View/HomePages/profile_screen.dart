@@ -1,7 +1,5 @@
 import 'package:ecommerce_app/Widget/profileComponent/textfieldcomponet.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -28,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Center(
                   child: ClipOval(
-                      child: Container(
+                      child: SizedBox(
                     height: 200,
                     width: 200,
                     child:

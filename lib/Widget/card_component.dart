@@ -28,7 +28,7 @@ class CardComponent extends StatelessWidget {
             right: 6,
             child: Align(
               alignment: Alignment.topRight,
-              child: Container(
+              child: SizedBox(
                 height: 200,
                 child: Column(
                   children: [

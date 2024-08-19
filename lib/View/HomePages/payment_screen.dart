@@ -90,7 +90,7 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                                 maxLines: 2,
                                 style: const TextStyle(fontSize: 16),
                               ),
-                              Row(
+                              const Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
@@ -181,7 +181,7 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                   ),
                   Text(widget.dis_amount,
                       style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
+                          const TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
                 ],
               ),
               SizedBox(

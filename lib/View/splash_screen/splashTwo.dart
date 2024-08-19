@@ -36,7 +36,7 @@ class _SplashTwoState extends State<SplashTwo> {
               children: [
                 Text(
                   '${currentIndex + 1} /3',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 TextButton(
                     onPressed: () {

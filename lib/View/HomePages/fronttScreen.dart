@@ -7,7 +7,6 @@ import 'package:ecommerce_app/FeatureList/womanList.dart';
 import 'package:ecommerce_app/View/HomePages/startedpage/defaulthome_screen.dart';
 import 'package:ecommerce_app/Widget/feature_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 
 class FrontScreen extends StatefulWidget {
   const FrontScreen({super.key});
@@ -38,7 +37,7 @@ class _FrontScreenState extends State<FrontScreen> {
   @override
   @override
   Widget build(BuildContext context) {
-    List<Widget> _screens = const [
+    List<Widget> screens = const [
       DefaultHomeScreen(),
       BeautyList(),
       FeatureFashionList(),
@@ -48,8 +47,8 @@ class _FrontScreenState extends State<FrontScreen> {
     ];
 
     String searchValue = '';
-    final CarouselController _carouselController = CarouselController();
-    final CarouselController _imageController = CarouselController();
+    final CarouselController carouselController = CarouselController();
+    final CarouselController imageController = CarouselController();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -294,7 +293,7 @@ class _FrontScreenState extends State<FrontScreen> {
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             // Display the selected screen
-            Container(child: _screens[_screenIndex]),
+            Container(child: screens[_screenIndex]),
           ],
         ),
       ),
