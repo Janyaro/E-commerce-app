@@ -152,7 +152,7 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      reverse: true,
+                      reverse: false,
                       itemCount: fetchedData!.length,
                       itemBuilder: (context, index) {
                         var item = fetchedData![index];

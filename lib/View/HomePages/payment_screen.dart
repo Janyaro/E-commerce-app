@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 
 class ShoppingBagScreen extends StatefulWidget {
   final String title;
@@ -62,7 +63,7 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                       ),
                       ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxWidth: width * 0.5, // Adjust as needed
+                          maxWidth: width * 0.5,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 5),
@@ -72,14 +73,16 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                               SizedBox(
                                 height: height * 0.05,
                               ),
-                              Text(
+                              ReadMoreText(
                                 widget.title,
+                                trimMode: TrimMode.Line,
+                                trimLines: 1,
                                 style: const TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.01,
+                                    MediaQuery.of(context).size.height * 0.001,
                               ),
                               Text(
                                 widget.description,
@@ -87,46 +90,19 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                                 maxLines: 2,
                                 style: const TextStyle(fontSize: 16),
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                      height: height * 0.06,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                          border: Border.all(
-                                              color: Colors.grey, width: 2)),
-                                      child: TextButton.icon(
-                                          onPressed: () {},
-                                          icon:
-                                              const Icon(Icons.arrow_drop_down),
-                                          label: const Text('Size'))),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  Container(
-                                      height: height * 0.06,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                          border: Border.all(
-                                              color: Colors.grey, width: 2)),
-                                      child: TextButton.icon(
-                                          onPressed: () {},
-                                          icon:
-                                              const Icon(Icons.arrow_drop_down),
-                                          label: const Text('QTY'))),
+                                  Text('Quaintiy'),
+                                  Text('1'),
+                                  SizedBox(
+                                    width: 10,
+                                  )
                                 ],
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.001,
-                              ),
                               const SizedBox(
-                                height: 10,
+                                height: 3,
                               ),
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,7 +126,10 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                 ),
               ),
               SizedBox(
-                height: height * 0.01,
+                height: height * 0.001,
+              ),
+              SizedBox(
+                height: height * 0.001,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -191,16 +170,16 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
               SizedBox(
                 height: height * 0.01,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Order Amounts',
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  Text('7,000.00',
+                  Text(widget.dis_amount,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
                 ],
@@ -349,3 +328,33 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
     );
   }
 }
+/*
+    Container(
+                                      height: height * 0.06,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          border: Border.all(
+                                              color: Colors.grey, width: 2)),
+                                      child: TextButton.icon(
+                                          onPressed: () {},
+                                          icon:
+                                              const Icon(Icons.arrow_drop_down),
+                                          label: const Text('Size'))),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  Container(
+                                      height: height * 0.06,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          border: Border.all(
+                                              color: Colors.grey, width: 2)),
+                                      child: TextButton.icon(
+                                          onPressed: () {},
+                                          icon:
+                                              const Icon(Icons.arrow_drop_down),
+                                          label: const Text('QTY'))),
+                              
+*/

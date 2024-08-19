@@ -7,6 +7,7 @@ import 'package:ecommerce_app/FeatureList/womanList.dart';
 import 'package:ecommerce_app/View/HomePages/startedpage/defaulthome_screen.dart';
 import 'package:ecommerce_app/Widget/feature_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class FrontScreen extends StatefulWidget {
   const FrontScreen({super.key});
@@ -33,13 +34,14 @@ class _FrontScreenState extends State<FrontScreen> {
   ];
 
   int _screenIndex = 0;
-
+  List<Color> _containerColors = List<Color>.filled(5, Colors.white);
+  @override
   @override
   Widget build(BuildContext context) {
     List<Widget> _screens = const [
       DefaultHomeScreen(),
       BeautyList(),
-      FashionListScreen(),
+      FeatureFashionList(),
       KidsListScreen(),
       MensList(),
       WomenList()
@@ -54,20 +56,26 @@ class _FrontScreenState extends State<FrontScreen> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                contentPadding: EdgeInsets.all(10),
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Search Any Product',
-                suffixIcon: Icon(Icons.speaker),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(6))),
-              ),
-              onChanged: (value) {
-                setState(() {
-                  searchValue = value;
-                });
+            GestureDetector(
+              onTap: () {
+                FocusScope.of(context).requestFocus(FocusNode());
               },
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  prefixIcon: Icon(Icons.search),
+                  hintText: 'Search Any Product',
+                  suffixIcon: Icon(Icons.speaker),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    searchValue = value;
+                  });
+                },
+              ),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.01,
@@ -123,85 +131,162 @@ class _FrontScreenState extends State<FrontScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  children: [
-                    FeatureIcon(
-                        imagepath: 'asset/beauty.jpg',
-                        ontap: () {
-                          setState(() {
-                            _screenIndex = 1;
-                          });
-                          print('beauty');
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    const Text('Beauty')
-                  ],
+                Container(
+                  decoration: BoxDecoration(
+                      color: _containerColors[0],
+                      borderRadius: BorderRadius.circular(6)),
+                  child: Column(
+                    children: [
+                      FeatureIcon(
+                          imagepath: 'asset/beauty.jpg',
+                          ontap: () {
+                            setState(() {
+                              _resetContainerColors();
+                              _containerColors[0] =
+                                  _containerColors[0] == Colors.white
+                                      ? Colors.blue
+                                      : Colors.white;
+                              _screenIndex = 1;
+                            });
+                            print(
+                              'beauty',
+                            );
+                          }),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      const Text(
+                        'Beauty',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    FeatureIcon(
-                        imagepath: 'asset/fashion.jpg',
-                        ontap: () {
-                          setState(() {
-                            _screenIndex = 2;
-                          });
-                          print('fashion');
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    const Text('Fashion')
-                  ],
+                Container(
+                  decoration: BoxDecoration(
+                      color: _containerColors[1],
+                      borderRadius: BorderRadius.circular(6)),
+                  child: Column(
+                    children: [
+                      FeatureIcon(
+                          imagepath: 'asset/fashion.jpg',
+                          ontap: () {
+                            setState(() {
+                              _resetContainerColors();
+                              _containerColors[1] =
+                                  _containerColors[1] == Colors.white
+                                      ? Colors.blue
+                                      : Colors.white;
+                              _screenIndex = 2;
+                            });
+                            print('fashion');
+                          }),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      const Text(
+                        'Fashion',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    FeatureIcon(
-                        imagepath: 'asset/kids.jpg',
-                        ontap: () {
-                          setState(() {
-                            _screenIndex = 3;
-                          });
-                          print('kids');
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    const Text('Kids')
-                  ],
+                Container(
+                  decoration: BoxDecoration(
+                      color: _containerColors[2],
+                      borderRadius: BorderRadius.circular(6)),
+                  child: Column(
+                    children: [
+                      FeatureIcon(
+                          imagepath: 'asset/kids.jpg',
+                          ontap: () {
+                            setState(() {
+                              _resetContainerColors();
+                              _containerColors[2] =
+                                  _containerColors[2] == Colors.white
+                                      ? Colors.blue
+                                      : Colors.white;
+                              _screenIndex = 3;
+                            });
+                            print('kids');
+                          }),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      const Text(
+                        'Kids',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    FeatureIcon(
-                        imagepath: 'asset/mens.jpg',
-                        ontap: () {
-                          setState(() {
-                            _screenIndex = 4;
-                          });
-                          print('men');
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    const Text('Mens')
-                  ],
+                Container(
+                  decoration: BoxDecoration(
+                      color: _containerColors[3],
+                      borderRadius: BorderRadius.circular(6)),
+                  child: Column(
+                    children: [
+                      FeatureIcon(
+                          imagepath: 'asset/mens.jpg',
+                          ontap: () {
+                            setState(() {
+                              _resetContainerColors();
+                              _containerColors[3] =
+                                  _containerColors[3] == Colors.white
+                                      ? Colors.blue
+                                      : Colors.white;
+                              _screenIndex = 4;
+                            });
+                            print('men');
+                          }),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      const Text(
+                        'Mens',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    FeatureIcon(
-                        imagepath: 'asset/womens.jpg',
-                        ontap: () {
-                          setState(() {
-                            _screenIndex = 5;
-                          });
-                          print('women');
-                        }),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    const Text('Womens')
-                  ],
+                Container(
+                  decoration: BoxDecoration(
+                      color: _containerColors[4],
+                      borderRadius: BorderRadius.circular(6)),
+                  child: Column(
+                    children: [
+                      FeatureIcon(
+                          imagepath: 'asset/womens.jpg',
+                          ontap: () {
+                            setState(() {
+                              _resetContainerColors();
+                              _containerColors[4] =
+                                  _containerColors[4] == Colors.white
+                                      ? Colors.blue
+                                      : Colors.white;
+                              _screenIndex = 5;
+                            });
+                            print('women');
+                          }),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      const Text(
+                        'Womens',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
@@ -214,5 +299,9 @@ class _FrontScreenState extends State<FrontScreen> {
         ),
       ),
     );
+  }
+
+  void _resetContainerColors() {
+    _containerColors = List<Color>.filled(5, Colors.white);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/View/HomePages/payment_screen.dart';
+import 'package:ecommerce_app/View/HomePages/shop_page.dart';
 import 'package:flutter/material.dart';
 
 class BeautyList extends StatefulWidget {
@@ -29,12 +30,14 @@ class _BeautyListState extends State<BeautyList> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ShoppingBagScreen(
+                        builder: (context) => const ShopScreen(
+                            img: 'asset/kids.jpg',
                             title: 'Black Winter...',
                             description:
                                 'Autumn And Winter Casual cotton-padded jacket...',
-                            img: 'asset/kids.jpg',
-                            dis_amount: '₹499')));
+                            price: '₹499',
+                            desprice: '0.00',
+                            percent: '0% off ')));
               },
               child: Container(
                 decoration: BoxDecoration(

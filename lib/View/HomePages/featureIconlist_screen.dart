@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/View/HomePages/shop_page.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
@@ -151,110 +152,125 @@ class _FeatureListScreenState extends State<FeatureListScreen> {
                   ),
                   itemBuilder: (context, index) {
                     return Card(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        // height: 300,
-                        width: 100,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                img[index],
-                                height: 150,
-                                width: 170,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ReadMoreText(
-                                      title[index],
-                                      trimMode: TrimMode.Line,
-                                      trimLines: 1,
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.0004,
-                                    ),
-                                    ReadMoreText(
-                                      description[index],
-                                      trimMode: TrimMode.Line,
-                                      trimLines: 1,
-                                      trimCollapsedText: 'more',
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.0004,
-                                    ),
-                                    Text(
-                                      '₹${price[index]}',
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                            size: 15,
-                                          ),
-                                          const Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                            size: 15,
-                                          ),
-                                          const Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                            size: 15,
-                                          ),
-                                          const Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                            size: 15,
-                                          ),
-                                          const Icon(
-                                            Icons.star_half,
-                                            size: 15,
-                                          ),
-                                          SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.0004,
-                                          ),
-                                          const Text(
-                                            '1,52,344',
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ShopScreen(
+                                      img: img[index],
+                                      title: title[index],
+                                      description: description[index],
+                                      price: price[index].toString(),
+                                      desprice: '0.00',
+                                      percent: '0% off')));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          // height: 300,
+                          width: 100,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.asset(
+                                  img[index],
+                                  height: 150,
+                                  width: 170,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 10),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ReadMoreText(
+                                        title[index],
+                                        trimMode: TrimMode.Line,
+                                        trimLines: 1,
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.0004,
+                                      ),
+                                      ReadMoreText(
+                                        description[index],
+                                        trimMode: TrimMode.Line,
+                                        trimLines: 1,
+                                        trimCollapsedText: 'more',
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.0004,
+                                      ),
+                                      Text(
+                                        '₹${price[index]}',
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 15,
+                                            ),
+                                            const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 15,
+                                            ),
+                                            const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 15,
+                                            ),
+                                            const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 15,
+                                            ),
+                                            const Icon(
+                                              Icons.star_half,
+                                              size: 15,
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.0004,
+                                            ),
+                                            const Text(
+                                              '1,52,344',
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );

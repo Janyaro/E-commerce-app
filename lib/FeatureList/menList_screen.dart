@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/View/HomePages/shop_page.dart';
 import 'package:flutter/material.dart';
 
 class MensList extends StatefulWidget {
@@ -22,97 +23,114 @@ class _MensListState extends State<MensList> {
           childAspectRatio: 0.56,
         ),
         itemBuilder: (context, index) {
-          return Card(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      'asset/kids.jpg',
-                      height: 150,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Black Winter...',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.0004,
-                          ),
-                          const Text(
-                            'Autumn And Winter Casual cotton-padded jacket...',
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.0004,
-                          ),
-                          const Text(
-                            '₹499',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 15,
-                                ),
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 15,
-                                ),
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 15,
-                                ),
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 15,
-                                ),
-                                const Icon(
-                                  Icons.star_half,
-                                  size: 15,
-                                ),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width *
-                                      0.0004,
-                                ),
-                                const Text(
-                                  '1,52,344',
-                                  style: TextStyle(color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ShopScreen(
+                          img: 'asset/kids.jpg',
+                          title: 'Black Winter...',
+                          description:
+                              'Autumn And Winter Casual cotton-padded jacket...',
+                          price: '₹499',
+                          desprice: '0.00',
+                          percent: '0% off ')));
+            },
+            child: Card(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        'asset/kids.jpg',
+                        height: 150,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Black Winter...',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.0004,
+                            ),
+                            const Text(
+                              'Autumn And Winter Casual cotton-padded jacket...',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.0004,
+                            ),
+                            const Text(
+                              '₹499',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 15,
+                                  ),
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 15,
+                                  ),
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 15,
+                                  ),
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 15,
+                                  ),
+                                  const Icon(
+                                    Icons.star_half,
+                                    size: 15,
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.0004,
+                                  ),
+                                  const Text(
+                                    '1,52,344',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

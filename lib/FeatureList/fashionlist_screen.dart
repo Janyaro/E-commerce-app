@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FashionListScreen extends StatefulWidget {
-  const FashionListScreen({super.key});
+class FeatureFashionList extends StatefulWidget {
+  const FeatureFashionList({super.key});
 
   @override
-  State<FashionListScreen> createState() => _FashionListScreenState();
+  State<FeatureFashionList> createState() => _FeatureFashionListState();
 }
 
-class _FashionListScreenState extends State<FashionListScreen> {
+class _FeatureFashionListState extends State<FeatureFashionList> {
   List<int> price = [
     499,
     399,
@@ -68,7 +68,7 @@ class _FashionListScreenState extends State<FashionListScreen> {
       height:
           MediaQuery.of(context).size.height * 0.4, // Set height for Expanded
       child: GridView.builder(
-        itemCount: title.length,
+        itemCount: 6,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 6,

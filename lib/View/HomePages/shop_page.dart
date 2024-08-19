@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_app/View/HomePages/payment_screen.dart';
 import 'package:ecommerce_app/utils/Utility.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class _ShopScreenState extends State<ShopScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Title bar'),
+        automaticallyImplyLeading: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -252,10 +253,6 @@ class _ShopScreenState extends State<ShopScreen> {
                             } else {
                               Utility().Mytoast('Box is not ready!');
                             }
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => const CartScreen())
                           },
                           child: Container(
                             height: 40,
@@ -274,7 +271,21 @@ class _ShopScreenState extends State<ShopScreen> {
                           width: 30,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ShoppingBagScreen(
+                                            title: widget.title,
+                                            description: widget.description,
+                                            img: widget.img,
+                                            dis_amount: widget.price)))
+                                .then((value) {
+                              Utility().Mytoast('Welcome to shopping page');
+                            }).onError((error, stackTrace) {
+                              Utility().Mytoast(error.toString());
+                            });
+                          },
                           child: Container(
                             height: 40,
                             width: 160,
