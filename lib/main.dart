@@ -1,7 +1,11 @@
+import 'package:ecommerce_app/View/HomePages/fronttScreen.dart';
 import 'package:ecommerce_app/View/HomePages/home_screen.dart';
+import 'package:ecommerce_app/viewModel/featureIconProvider.dart';
+import 'package:ecommerce_app/viewModel/homeScreenProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +19,10 @@ void main() async {
   final appDocumentsDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentsDirectory.path);
 
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => ScreenProvider()),
+    ChangeNotifierProvider(create: (_) => HomeProvider()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

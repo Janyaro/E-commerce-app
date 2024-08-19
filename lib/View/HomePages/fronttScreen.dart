@@ -6,7 +6,9 @@ import 'package:ecommerce_app/FeatureList/menList_screen.dart';
 import 'package:ecommerce_app/FeatureList/womanList.dart';
 import 'package:ecommerce_app/View/HomePages/startedpage/defaulthome_screen.dart';
 import 'package:ecommerce_app/Widget/feature_icon.dart';
+import 'package:ecommerce_app/viewModel/featureIconProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FrontScreen extends StatefulWidget {
   const FrontScreen({super.key});
@@ -32,12 +34,9 @@ class _FrontScreenState extends State<FrontScreen> {
     'asset/maskgroup.jpg',
   ];
 
-  int _screenIndex = 0;
-  List<Color> _containerColors = List<Color>.filled(5, Colors.white);
-  @override
   @override
   Widget build(BuildContext context) {
-    List<Widget> screens = const [
+    List<Widget> _screens = const [
       DefaultHomeScreen(),
       BeautyList(),
       FeatureFashionList(),
@@ -46,10 +45,10 @@ class _FrontScreenState extends State<FrontScreen> {
       WomenList()
     ];
 
-    String searchValue = '';
+    // String searchValue = '';
     final CarouselController carouselController = CarouselController();
-    final CarouselController imageController = CarouselController();
-
+    final CarouselController _imageController = CarouselController();
+    final screenProvider = Provider.of<ScreenProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: SingleChildScrollView(
@@ -69,11 +68,7 @@ class _FrontScreenState extends State<FrontScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(6)),
                   ),
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    searchValue = value;
-                  });
-                },
+                onChanged: (value) {},
               ),
             ),
             SizedBox(
@@ -132,24 +127,15 @@ class _FrontScreenState extends State<FrontScreen> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                      color: _containerColors[0],
+                      color: screenProvider.containerColors[0],
                       borderRadius: BorderRadius.circular(6)),
                   child: Column(
                     children: [
                       FeatureIcon(
                           imagepath: 'asset/beauty.jpg',
                           ontap: () {
-                            setState(() {
-                              _resetContainerColors();
-                              _containerColors[0] =
-                                  _containerColors[0] == Colors.white
-                                      ? Colors.blue
-                                      : Colors.white;
-                              _screenIndex = 1;
-                            });
-                            print(
-                              'beauty',
-                            );
+                            screenProvider.resetContainerColors();
+                            screenProvider.updateContainerColor(0);
                           }),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
@@ -165,22 +151,15 @@ class _FrontScreenState extends State<FrontScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: _containerColors[1],
+                      color: screenProvider.containerColors[1],
                       borderRadius: BorderRadius.circular(6)),
                   child: Column(
                     children: [
                       FeatureIcon(
                           imagepath: 'asset/fashion.jpg',
                           ontap: () {
-                            setState(() {
-                              _resetContainerColors();
-                              _containerColors[1] =
-                                  _containerColors[1] == Colors.white
-                                      ? Colors.blue
-                                      : Colors.white;
-                              _screenIndex = 2;
-                            });
-                            print('fashion');
+                            screenProvider.resetContainerColors();
+                            screenProvider.updateContainerColor(1);
                           }),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
@@ -196,22 +175,15 @@ class _FrontScreenState extends State<FrontScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: _containerColors[2],
+                      color: screenProvider.containerColors[2],
                       borderRadius: BorderRadius.circular(6)),
                   child: Column(
                     children: [
                       FeatureIcon(
                           imagepath: 'asset/kids.jpg',
                           ontap: () {
-                            setState(() {
-                              _resetContainerColors();
-                              _containerColors[2] =
-                                  _containerColors[2] == Colors.white
-                                      ? Colors.blue
-                                      : Colors.white;
-                              _screenIndex = 3;
-                            });
-                            print('kids');
+                            screenProvider.resetContainerColors();
+                            screenProvider.updateContainerColor(2);
                           }),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
@@ -227,22 +199,15 @@ class _FrontScreenState extends State<FrontScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: _containerColors[3],
+                      color: screenProvider.containerColors[3],
                       borderRadius: BorderRadius.circular(6)),
                   child: Column(
                     children: [
                       FeatureIcon(
                           imagepath: 'asset/mens.jpg',
                           ontap: () {
-                            setState(() {
-                              _resetContainerColors();
-                              _containerColors[3] =
-                                  _containerColors[3] == Colors.white
-                                      ? Colors.blue
-                                      : Colors.white;
-                              _screenIndex = 4;
-                            });
-                            print('men');
+                            screenProvider.resetContainerColors();
+                            screenProvider.updateContainerColor(3);
                           }),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
@@ -258,22 +223,15 @@ class _FrontScreenState extends State<FrontScreen> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: _containerColors[4],
+                      color: screenProvider.containerColors[4],
                       borderRadius: BorderRadius.circular(6)),
                   child: Column(
                     children: [
                       FeatureIcon(
                           imagepath: 'asset/womens.jpg',
                           ontap: () {
-                            setState(() {
-                              _resetContainerColors();
-                              _containerColors[4] =
-                                  _containerColors[4] == Colors.white
-                                      ? Colors.blue
-                                      : Colors.white;
-                              _screenIndex = 5;
-                            });
-                            print('women');
+                            screenProvider.resetContainerColors();
+                            screenProvider.updateContainerColor(4);
                           }),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.01,
@@ -293,14 +251,14 @@ class _FrontScreenState extends State<FrontScreen> {
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             // Display the selected screen
-            Container(child: screens[_screenIndex]),
+            Consumer<ScreenProvider>(
+              builder: (context, value, child) {
+                return Container(child: _screens[value.screenIndex]);
+              },
+            )
           ],
         ),
       ),
     );
-  }
-
-  void _resetContainerColors() {
-    _containerColors = List<Color>.filled(5, Colors.white);
   }
 }
