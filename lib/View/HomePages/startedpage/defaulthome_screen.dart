@@ -1,4 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_app/View/HomePages/featureIconlist_screen.dart';
 import 'package:ecommerce_app/View/HomePages/shop_page.dart';
 import 'package:ecommerce_app/Widget/card_component.dart';
 import 'package:ecommerce_app/Widget/itemCarousal.dart';
@@ -37,9 +40,9 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
   List<int> cart_disprice = [1500, 2499, 1599];
   List<int> act_price = [2499, 4999, 4300];
   List<int> cart_percent = [40, 50, 30];
-  void _onItemTapped(int index) {
-    setState(() {});
-  }
+  // void onItemTapped(int index) {
+  //   setState(() {});
+  // }
 
   final CarouselController _carouselController = CarouselController();
   final CarouselController _imageController = CarouselController();
@@ -284,30 +287,38 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                     'Summer’ 25 Collections',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                   ),
-                  trailing: Container(
-                    width: 120,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Colors.pink,
-                        border: Border.all(color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.circular(6)),
-                    child: const Center(
-                        child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'View All',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                        )
-                      ],
-                    )),
+                  trailing: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FeatureListScreen()));
+                    },
+                    child: Container(
+                      width: 120,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.pink,
+                          border: Border.all(color: Colors.white, width: 2),
+                          borderRadius: BorderRadius.circular(6)),
+                      child: const Center(
+                          child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'View All',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          )
+                        ],
+                      )),
+                    ),
                   ),
                 )
               ],

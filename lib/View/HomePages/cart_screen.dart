@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/View/HomePages/payment_screen.dart';
+import 'package:ecommerce_app/View/HomePages/shop_page.dart';
 import 'package:ecommerce_app/Widget/cartWidget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +42,19 @@ class _CartScreenState extends State<CartScreen> {
     } catch (e) {
       if (kDebugMode) {
         print('Error fetching data: $e');
+      }
+    }
+  }
+
+  Future<void> deleteItem(int index) async {
+    try {
+      final key = box!.keyAt(index);
+      await box!.delete(key);
+      await getData(); // Refresh the data
+      setState(() {});
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error deleting item: $e');
       }
     }
   }
@@ -152,16 +167,30 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      reverse: false,
+                      reverse: true,
                       itemCount: fetchedData!.length,
                       itemBuilder: (context, index) {
                         var item = fetchedData![index];
-                        return CartWidget(
-                          img: item['productImage'].toString(),
-                          title: item['productName'].toString(),
-                          totalprice: item['totalPrice'].toString(),
-                          discount: item['discount'].toString(),
-                          disprice: item['actualPrice'].toString(),
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ShoppingBagScreen(
+                                        title: item['productName'].toString(),
+                                        description: '',
+                                        img: item['productImage'].toString(),
+                                        dis_amount:
+                                            item['discount'].toString())));
+                          },
+                          child: CartWidget(
+                            ondelete: () => deleteItem(index),
+                            img: item['productImage'].toString(),
+                            title: item['productName'].toString(),
+                            totalprice: item['totalPrice'].toString(),
+                            discount: item['discount'].toString(),
+                            disprice: item['actualPrice'].toString(),
+                          ),
                         );
                       },
                     ),
@@ -169,7 +198,10 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               ),
             )
-          : const Center(child: CircularProgressIndicator()),
+          : const Center(
+              child: Center(
+              child: Text('Cart is Empty'),
+            )),
     );
   }
 }

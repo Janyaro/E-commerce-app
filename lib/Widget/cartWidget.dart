@@ -6,13 +6,15 @@ class CartWidget extends StatelessWidget {
   final String totalprice;
   final String discount;
   final String disprice;
+  final VoidCallback ondelete;
   const CartWidget(
       {super.key,
       required this.title,
       required this.totalprice,
       required this.discount,
       required this.disprice,
-      required this.img});
+      required this.img,
+      required this.ondelete});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +42,23 @@ class CartWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    // const SizedBox(
+                    //   width: 0,
+                    // ),
+                    IconButton(
+                        onPressed: ondelete,
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ))
+                  ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.01,

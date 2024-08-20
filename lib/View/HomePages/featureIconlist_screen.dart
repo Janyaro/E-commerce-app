@@ -161,9 +161,9 @@ class _FeatureListScreenState extends State<FeatureListScreen> {
                                       img: img[index],
                                       title: title[index],
                                       description: description[index],
-                                      price: price[index].toString(),
-                                      desprice: '0.00',
-                                      percent: '0% off')));
+                                      price: '0.00',
+                                      desprice: '0% off',
+                                      percent: price[index].toString())));
                         },
                         child: Container(
                           decoration: BoxDecoration(

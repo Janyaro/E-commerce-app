@@ -1,5 +1,4 @@
-import 'package:ecommerce_app/View/HomePages/fronttScreen.dart';
-import 'package:ecommerce_app/View/HomePages/home_screen.dart';
+import 'package:ecommerce_app/View/splash_screen/splash.dart';
 import 'package:ecommerce_app/viewModel/featureIconProvider.dart';
 import 'package:ecommerce_app/viewModel/homeScreenProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +32,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(primarySwatch: Colors.pink),
         debugShowCheckedModeBanner: false,
-        home: const HomeScreem());
+        home: const SplashScreen());
   }
 }

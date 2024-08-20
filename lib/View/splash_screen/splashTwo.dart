@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/View/Auth_Screen/sign_in.dart';
+import 'package:ecommerce_app/View/HomePages/get_started.dart';
 import 'package:ecommerce_app/Widget/Reuse_container.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -43,7 +44,7 @@ class _SplashTwoState extends State<SplashTwo> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignIn()));
+                              builder: (context) => const GetStartedScreen()));
                     },
                     child: const Text(
                       'Skip',

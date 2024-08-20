@@ -33,9 +33,9 @@ class _WomenListState extends State<WomenList> {
                           title: 'Black Winter...',
                           description:
                               'Autumn And Winter Casual cotton-padded jacket...',
-                          price: '₹499',
+                          price: '0% off ',
                           desprice: '0.00',
-                          percent: '0% off ')));
+                          percent: '₹499')));
             },
             child: Card(
               child: Container(

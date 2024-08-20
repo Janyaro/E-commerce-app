@@ -25,7 +25,7 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: const Text('Shopping Bag'),
         centerTitle: true,
         actions: [
@@ -180,8 +180,8 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                     ),
                   ),
                   Text(widget.dis_amount,
-                      style:
-                          const TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold))
                 ],
               ),
               SizedBox(
