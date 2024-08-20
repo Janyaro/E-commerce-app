@@ -2,9 +2,11 @@ import 'package:ecommerce_app/View/Auth_Screen/sign_in.dart';
 import 'package:ecommerce_app/Widget/myBtn.dart';
 import 'package:ecommerce_app/Widget/social_icon.dart';
 import 'package:ecommerce_app/utils/Utility.dart';
+import 'package:ecommerce_app/viewModel/AuthScreenProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -35,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Create an\naccount',
+                    'Create an\nAccount',
                     style: TextStyle(fontSize: 37, fontWeight: FontWeight.w900),
                   ),
                 ),
@@ -66,24 +68,40 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,
                         ),
-                        TextFormField(
-                          controller: passwordController,
-                          decoration: const InputDecoration(
+                        Consumer<AuthenticationProvider>(
+                            builder: (context, authProvider, index) {
+                          return TextFormField(
+                            controller: passwordController,
+                            obscureText: !authProvider.Visible,
+                            decoration: InputDecoration(
                               hintText: 'Password',
-                              fillColor: Color(0xffF3F3F3),
+                              fillColor: const Color(0xffF3F3F3),
                               filled: true,
-                              prefixIcon: Icon(Icons.lock),
-                              suffixIcon: Icon(Icons.visibility),
-                              border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)))),
-                          validator: (value) {
-                            if (value!.isEmpty || value.length < 8) {
-                              return 'Enter Password';
-                            }
-                            return null;
-                          },
-                        ),
+                              prefixIcon: const Icon(Icons.lock),
+                              suffixIcon: InkWell(
+                                onTap: () {
+                                  authProvider
+                                      .toggleVisibility(); // Toggle visibility
+                                },
+                                child: Icon(authProvider.Visible
+                                    ? Icons.visibility
+                                    : Icons
+                                        .visibility_off), // Change icon based on visibility
+                              ),
+                              border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty || value.length < 8) {
+                                return 'Enter Password';
+                              }
+                              return null;
+                            },
+                          );
+                        }),
+
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.03,
                         ),

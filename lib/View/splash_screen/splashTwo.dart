@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/View/Auth_Screen/sign_in.dart';
 import 'package:ecommerce_app/View/HomePages/get_started.dart';
 import 'package:ecommerce_app/Widget/Reuse_container.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +83,8 @@ class _SplashTwoState extends State<SplashTwo> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SignIn()));
+                                builder: (context) =>
+                                    const GetStartedScreen()));
                       } else {
                         setState(() {
                           currentIndex = (currentIndex + 1);

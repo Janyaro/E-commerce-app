@@ -23,7 +23,6 @@ class _HomeScreemState extends State<HomeScreem> {
   ];
   @override
   Widget build(BuildContext context) {
-    print('main bhi chl rha hoon');
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -53,7 +52,60 @@ class _HomeScreemState extends State<HomeScreem> {
           ],
         ),
         drawer: Drawer(
-          backgroundColor: Colors.blue.shade300,
+          child: ListView(
+            children: [
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreem()));
+                },
+                leading: const Icon(Icons.home),
+                title: const Text('Home'),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FeatureListScreen()));
+                },
+                leading: const Icon(Icons.favorite),
+                title: const Text('WishList'),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CartScreen()));
+                },
+                leading: const Icon(Icons.shopping_bag),
+                title: const Text('Cart'),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreem()));
+                },
+                leading: const Icon(Icons.home),
+                title: const Text('Home'),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()));
+                },
+                leading: const Icon(Icons.settings),
+                title: const Text('Setting'),
+              ),
+            ],
+          ),
         ),
         body: Consumer<HomeProvider>(builder: (context, homeProvider, index) {
           return tabBarScreen[homeProvider.selectedIndex];

@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/View/HomePages/home_screen.dart';
+import 'package:ecommerce_app/View/Auth_Screen/sign_in.dart';
 import 'package:ecommerce_app/Widget/myBtn.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +51,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeScreem()));
+                              builder: (context) => const SignIn()));
                     }),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,

@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/View/splash_screen/splash.dart';
+import 'package:ecommerce_app/viewModel/AuthScreenProvider.dart';
 import 'package:ecommerce_app/viewModel/featureIconProvider.dart';
 import 'package:ecommerce_app/viewModel/homeScreenProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,6 +22,7 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ScreenProvider()),
     ChangeNotifierProvider(create: (_) => HomeProvider()),
+    ChangeNotifierProvider(create: (_) => AuthenticationProvider())
   ], child: const MyApp()));
 }
 
