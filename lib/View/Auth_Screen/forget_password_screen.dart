@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/Services/Auth.services.dart';
 import 'package:ecommerce_app/Widget/myBtn.dart';
+import 'package:ecommerce_app/utils/Utility.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
@@ -9,10 +11,15 @@ class ForgetPasswordScreen extends StatefulWidget {
 }
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+  AuthServices authServices = AuthServices();
+  final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
@@ -26,14 +33,16 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   child: Text(
                     textAlign: TextAlign.start,
                     'Forget \nPassword',
-                    style: TextStyle(fontSize: 37, fontWeight: FontWeight.w900),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w900),
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
                 TextFormField(
+                    controller: emailController,
                     decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.all(10),
                         hintText: 'Username or Email',
                         fillColor: Color(0xffF3F3F3),
                         filled: true,
@@ -50,7 +59,12 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
-                MyBtn(title: 'Submit', ontap: () {})
+                MyBtn(
+                    title: 'Submit',
+                    ontap: () {
+                      authServices
+                          .resetPassword(emailController.text.toString());
+                    })
               ],
             ),
           ),

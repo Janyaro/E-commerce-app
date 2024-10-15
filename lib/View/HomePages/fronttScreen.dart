@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app/FeatureList/beautyList.dart';
 import 'package:ecommerce_app/FeatureList/fashionlist_screen.dart';
 import 'package:ecommerce_app/FeatureList/kidslist.dart';
@@ -45,10 +45,14 @@ class _FrontScreenState extends State<FrontScreen> {
       WomenList()
     ];
 
-    // String searchValue = '';
-    final CarouselController carouselController = CarouselController();
-    final CarouselController _imageController = CarouselController();
+    // Using carousel_slider prefix for CarouselController
+    // final CarouselController _carouselController = CarouselController();
+    // final CarouselController _imageController = CarouselController();
+
+    CarouselSliderController _imageController = CarouselSliderController();
+    CarouselSliderController _carouselController = CarouselSliderController();
     final screenProvider = Provider.of<ScreenProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: SingleChildScrollView(

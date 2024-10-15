@@ -14,7 +14,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),

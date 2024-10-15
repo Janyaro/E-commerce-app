@@ -51,6 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextFormField(
                           controller: emailController,
                           decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(10),
                               hintText: 'Username or Email',
                               fillColor: Color(0xffF3F3F3),
                               filled: true,
@@ -66,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         Consumer<AuthenticationProvider>(
                             builder: (context, authProvider, index) {
@@ -74,6 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             controller: passwordController,
                             obscureText: !authProvider.Visible,
                             decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.all(10),
                               hintText: 'Password',
                               fillColor: const Color(0xffF3F3F3),
                               filled: true,
@@ -123,9 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         //     return null;
                         //   },
                         // ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
+
                         MyBtn(
                             title: 'Create Account',
                             isloading: isloading,
@@ -157,7 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               }
                             }),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         Column(
                           children: [
@@ -185,7 +185,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               builder: (context) =>
                                                   const SignIn()));
                                     },
-                                    child: const Text('Login'))
+                                    child: const Text('Login',
+                                        style: TextStyle(fontSize: 18)))
                               ],
                             )
                           ],

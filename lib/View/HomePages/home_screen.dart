@@ -51,60 +51,65 @@ class _HomeScreemState extends State<HomeScreem> {
             )
           ],
         ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreem()));
-                },
-                leading: const Icon(Icons.home),
-                title: const Text('Home'),
-              ),
-              ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FeatureListScreen()));
-                },
-                leading: const Icon(Icons.favorite),
-                title: const Text('WishList'),
-              ),
-              ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CartScreen()));
-                },
-                leading: const Icon(Icons.shopping_bag),
-                title: const Text('Cart'),
-              ),
-              ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreem()));
-                },
-                leading: const Icon(Icons.home),
-                title: const Text('Home'),
-              ),
-              ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ProfileScreen()));
-                },
-                leading: const Icon(Icons.settings),
-                title: const Text('Setting'),
-              ),
-            ],
+        drawer: SafeArea(
+          child: Drawer(
+            child: ListView(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.07,
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreem()));
+                  },
+                  leading: const Icon(Icons.home),
+                  title: const Text('Home'),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FeatureListScreen()));
+                  },
+                  leading: const Icon(Icons.favorite),
+                  title: const Text('WishList'),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CartScreen()));
+                  },
+                  leading: const Icon(Icons.shopping_bag),
+                  title: const Text('Cart'),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreem()));
+                  },
+                  leading: const Icon(Icons.home),
+                  title: const Text('Home'),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfileScreen()));
+                  },
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Setting'),
+                ),
+              ],
+            ),
           ),
         ),
         body: Consumer<HomeProvider>(builder: (context, homeProvider, index) {

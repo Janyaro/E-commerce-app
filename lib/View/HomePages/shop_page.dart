@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:ecommerce_app/View/HomePages/payment_screen.dart';
 import 'package:ecommerce_app/utils/Utility.dart';
 import 'package:flutter/foundation.dart';
@@ -26,7 +26,7 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
-  final CarouselController _carouselController = CarouselController();
+  // final CarouselController _carouselController = CarouselController();
   Box? box;
   bool isBoxReady = false;
   int item = 0;

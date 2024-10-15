@@ -27,13 +27,15 @@ class CartWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Container(
-              width: 160,
-              height: 160,
-              decoration: const BoxDecoration(),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(fit: BoxFit.cover, img)),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(fit: BoxFit.cover, img)),
+              ),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.02,

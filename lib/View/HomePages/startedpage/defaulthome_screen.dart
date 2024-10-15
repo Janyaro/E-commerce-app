@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app/View/HomePages/featureIconlist_screen.dart';
 import 'package:ecommerce_app/View/HomePages/shop_page.dart';
@@ -8,6 +6,7 @@ import 'package:ecommerce_app/Widget/itemCarousal.dart';
 import 'package:ecommerce_app/Widget/slider_image.dart';
 import 'package:ecommerce_app/Widget/small_card.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class DefaultHomeScreen extends StatefulWidget {
   const DefaultHomeScreen({super.key});
@@ -40,12 +39,12 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
   List<int> cart_disprice = [1500, 2499, 1599];
   List<int> act_price = [2499, 4999, 4300];
   List<int> cart_percent = [40, 50, 30];
-  // void onItemTapped(int index) {
-  //   setState(() {});
-  // }
 
-  final CarouselController _carouselController = CarouselController();
-  final CarouselController _imageController = CarouselController();
+  // final CarouselController carouselController = CarouselController();
+  // final CarouselController imageController = CarouselController();
+  CarouselSliderController _imageController = CarouselSliderController();
+  CarouselSliderController _carouselController = CarouselSliderController();
+
   @override
   Widget build(BuildContext context) {
     return Column(

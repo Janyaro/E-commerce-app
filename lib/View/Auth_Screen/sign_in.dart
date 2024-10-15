@@ -31,12 +31,15 @@ class _SignInState extends State<SignIn> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.08,
+                ),
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     textAlign: TextAlign.start,
                     "Welcome\nBack!",
-                    style: TextStyle(fontSize: 37, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(
@@ -45,6 +48,7 @@ class _SignInState extends State<SignIn> {
                 TextFormField(
                     controller: emailController,
                     decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.all(10),
                         hintText: 'Username or Email',
                         fillColor: Color(0xffF3F3F3),
                         filled: true,
@@ -53,7 +57,7 @@ class _SignInState extends State<SignIn> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))))),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.04,
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 Consumer<AuthenticationProvider>(
                     builder: (context, authProvider, _) {
@@ -61,6 +65,7 @@ class _SignInState extends State<SignIn> {
                     controller: passwordController,
                     obscureText: !authProvider.Visible,
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
                       hintText: 'Password',
                       fillColor: const Color(0xffF3F3F3),
                       filled: true,
@@ -121,11 +126,14 @@ class _SignInState extends State<SignIn> {
                       });
                     }),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 Column(
                   children: [
-                    const Text('- OR Continue with -'),
+                    const Text(
+                      '- OR Continue with -',
+                      style: TextStyle(fontSize: 14),
+                    ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
@@ -140,7 +148,9 @@ class _SignInState extends State<SignIn> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Create An Account'),
+                        const Text(
+                          'Create An Account',
+                        ),
                         TextButton(
                             onPressed: () {
                               Navigator.push(
@@ -149,7 +159,8 @@ class _SignInState extends State<SignIn> {
                                       builder: (context) =>
                                           const SignUpScreen()));
                             },
-                            child: const Text('Sign Up'))
+                            child: const Text('Sign Up',
+                                style: TextStyle(fontSize: 18)))
                       ],
                     )
                   ],

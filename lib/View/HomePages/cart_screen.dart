@@ -68,8 +68,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Check Out'),
-        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: isBoxReady && fetchedData != null && fetchedData!.isNotEmpty
           ? Padding(
