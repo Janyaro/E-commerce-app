@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/Services/Auth.services.dart';
 import 'package:ecommerce_app/Widget/myBtn.dart';
-import 'package:ecommerce_app/utils/Utility.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {

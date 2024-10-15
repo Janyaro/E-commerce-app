@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/View/Auth_Screen/forget_password_screen.dart';
 import 'package:ecommerce_app/View/Auth_Screen/sign_up.dart';
-import 'package:ecommerce_app/View/HomePages/get_started.dart';
 import 'package:ecommerce_app/View/HomePages/home_screen.dart';
 import 'package:ecommerce_app/Widget/myBtn.dart';
 import 'package:ecommerce_app/Widget/social_icon.dart';

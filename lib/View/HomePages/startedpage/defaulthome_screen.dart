@@ -6,7 +6,6 @@ import 'package:ecommerce_app/Widget/itemCarousal.dart';
 import 'package:ecommerce_app/Widget/slider_image.dart';
 import 'package:ecommerce_app/Widget/small_card.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class DefaultHomeScreen extends StatefulWidget {
   const DefaultHomeScreen({super.key});
