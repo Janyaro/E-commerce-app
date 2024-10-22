@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/View/HomePages/categorieswise_screen.dart';
+import 'package:ecommerce_app/utils/Utility.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
@@ -307,17 +309,23 @@ class _ShoppingBagScreenState extends State<ShoppingBagScreen> {
                   const SizedBox(
                     width: 40,
                   ),
-                  Container(
-                    width: 200,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: const Color(0xffF83758)),
-                    child: const Center(
-                        child: Text(
-                      'Proceed to Payment',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    )),
+                  InkWell(
+                    onTap: () {
+                      Utility().Mytoast('Order Placed');
+                      
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: const Color(0xffF83758)),
+                      child: const Center(
+                          child: Text(
+                        'Proceed to Payment',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      )),
+                    ),
                   )
                 ],
               ),

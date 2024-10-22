@@ -1,15 +1,15 @@
-import 'package:ecommerce_app/View/HomePages/shop_page.dart';
+import 'package:ecommerce_app/View/HomePages/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
-class FeatureListScreen extends StatefulWidget {
-  const FeatureListScreen({super.key});
+class WishlistScreen extends StatefulWidget {
+  const WishlistScreen({super.key});
 
   @override
-  State<FeatureListScreen> createState() => _FeatureListScreenState();
+  State<WishlistScreen> createState() => _WishlistScreenState();
 }
 
-class _FeatureListScreenState extends State<FeatureListScreen> {
+class _WishlistScreenState extends State<WishlistScreen> {
   List<String> title = [
     'Black Winter...',
     'Mens Starry',
@@ -157,7 +157,7 @@ class _FeatureListScreenState extends State<FeatureListScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ShopScreen(
+                                  builder: (context) => productDetailScreen(
                                       img: img[index],
                                       title: title[index],
                                       description: description[index],

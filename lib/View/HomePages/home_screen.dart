@@ -1,8 +1,9 @@
 import 'package:ecommerce_app/View/HomePages/cart_screen.dart';
-import 'package:ecommerce_app/View/HomePages/featureIconlist_screen.dart';
-import 'package:ecommerce_app/View/HomePages/fronttScreen.dart';
+import 'package:ecommerce_app/View/HomePages/wishlist_screen.dart';
+import 'package:ecommerce_app/View/HomePages/categorieswise_screen.dart';
 import 'package:ecommerce_app/View/HomePages/profile_screen.dart';
-import 'package:ecommerce_app/View/logout_user.dart';
+import 'package:ecommerce_app/View/HomePages/startedpage/defaulthome_screen.dart';
+import 'package:ecommerce_app/View/Auth_Screen/logout_user.dart';
 import 'package:ecommerce_app/viewModel/homeScreenProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,7 @@ class HomeScreem extends StatefulWidget {
 class _HomeScreemState extends State<HomeScreem> {
   List<Widget> tabBarScreen = const [
     FrontScreen(),
-    FeatureListScreen(),
+    WishlistScreen(),
     CartScreen(),
     Text('Seach bar abhi nhi lga hai'),
     LogoutUserScreen()
@@ -74,7 +75,7 @@ class _HomeScreemState extends State<HomeScreem> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const FeatureListScreen()));
+                            builder: (context) => const WishlistScreen()));
                   },
                   leading: const Icon(Icons.favorite),
                   title: const Text('WishList'),

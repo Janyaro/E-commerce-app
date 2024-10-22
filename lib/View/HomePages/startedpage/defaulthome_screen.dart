@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_app/View/HomePages/featureIconlist_screen.dart';
-import 'package:ecommerce_app/View/HomePages/shop_page.dart';
+import 'package:ecommerce_app/View/HomePages/wishlist_screen.dart';
+import 'package:ecommerce_app/View/HomePages/product_detail.dart';
 import 'package:ecommerce_app/Widget/card_component.dart';
 import 'package:ecommerce_app/Widget/itemCarousal.dart';
 import 'package:ecommerce_app/Widget/slider_image.dart';
-import 'package:ecommerce_app/Widget/description_card.dart';
+import 'package:ecommerce_app/Widget/deal_description_card.dart';
 import 'package:flutter/material.dart';
 
 class DefaultHomeScreen extends StatefulWidget {
@@ -85,7 +85,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ShopScreen(
+                            builder: (context) => productDetailScreen(
                                   img: carImg[index],
                                   title: cart_title[index],
                                   description: cart_description[index],
@@ -215,7 +215,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ShopScreen(
+                              builder: (context) => productDetailScreen(
                                   img: carImg[index],
                                   title: cart_title[index],
                                   description: cart_description[index],
@@ -290,7 +290,7 @@ class _DefaultHomeScreenState extends State<DefaultHomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const FeatureListScreen()));
+                              builder: (context) => const WishlistScreen()));
                     },
                     child: Container(
                       width: 120,

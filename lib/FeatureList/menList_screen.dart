@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/View/HomePages/shop_page.dart';
+import 'package:ecommerce_app/View/HomePages/product_detail.dart';
 import 'package:flutter/material.dart';
 
 class MensList extends StatefulWidget {
@@ -28,7 +28,7 @@ class _MensListState extends State<MensList> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ShopScreen(
+                      builder: (context) => const productDetailScreen(
                           img: 'asset/kids.jpg',
                           title: 'Black Winter...',
                           description:

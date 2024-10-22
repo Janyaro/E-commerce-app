@@ -5,14 +5,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-class ShopScreen extends StatefulWidget {
+class productDetailScreen extends StatefulWidget {
   final String img;
   final String title;
   final String description;
   final String price;
   final String desprice;
   final String percent;
-  const ShopScreen(
+  const productDetailScreen(
       {super.key,
       required this.img,
       required this.title,
@@ -22,10 +22,10 @@ class ShopScreen extends StatefulWidget {
       required this.percent});
 
   @override
-  State<ShopScreen> createState() => _ShopScreenState();
+  State<productDetailScreen> createState() => _productDetailScreenState();
 }
 
-class _ShopScreenState extends State<ShopScreen> {
+class _productDetailScreenState extends State<productDetailScreen> {
   // final CarouselController _carouselController = CarouselController();
   Box? box;
   bool isBoxReady = false;
