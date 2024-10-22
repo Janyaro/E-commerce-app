@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Services/Auth.services.dart';
 import 'package:ecommerce_app/View/Auth_Screen/forget_password_screen.dart';
 import 'package:ecommerce_app/View/Auth_Screen/sign_up.dart';
 import 'package:ecommerce_app/View/HomePages/home_screen.dart';
@@ -62,7 +63,7 @@ class _SignInState extends State<SignIn> {
                     builder: (context, authProvider, _) {
                   return TextFormField(
                     controller: passwordController,
-                    obscureText: !authProvider.Visible,
+                    obscureText: !authProvider.visible,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       hintText: 'Password',
@@ -73,7 +74,7 @@ class _SignInState extends State<SignIn> {
                         onTap: () {
                           authProvider.toggleVisibility(); // Toggle visibility
                         },
-                        child: Icon(authProvider.Visible
+                        child: Icon(authProvider.visible
                             ? Icons.visibility
                             : Icons
                                 .visibility_off), // Change icon based on visibility
@@ -98,32 +99,27 @@ class _SignInState extends State<SignIn> {
                                         const ForgetPasswordScreen()));
                           },
                         ))),
-                MyBtn(
-                    title: 'Login',
-                    isloading: isLoading,
-                    ontap: () {
-                      setState(() {
-                        isLoading = true;
-                      });
-                      auth
-                          .signInWithEmailAndPassword(
-                              email: emailController.text.toString(),
-                              password: passwordController.text.toString())
-                          .then((value) {
-                        setState(() {
-                          isLoading = false;
+                Consumer<AuthenticationProvider>(
+                  builder: (context, authProvider, _) => MyBtn(
+                      title: 'Login',
+                      isloading: authProvider.isloading,
+                      ontap: () {
+                        authProvider.setloading(true);
+                        AuthServices()
+                            .signinUser(emailController.text.toString(),
+                                passwordController.text.toString())
+                            .then((value) {
+                          authProvider.setloading(false);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreem()));
+                        }).onError((error, stackTrace) {
+                          authProvider.setloading(false);
+                          Utility().Mytoast(error.toString());
                         });
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomeScreem()));
-                      }).onError((error, stackTrace) {
-                        setState(() {
-                          isLoading = false;
-                        });
-                        Utility().Mytoast(error.toString());
-                      });
-                    }),
+                      }),
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),

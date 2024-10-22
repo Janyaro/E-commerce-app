@@ -2,6 +2,7 @@ import 'package:ecommerce_app/View/HomePages/cart_screen.dart';
 import 'package:ecommerce_app/View/HomePages/featureIconlist_screen.dart';
 import 'package:ecommerce_app/View/HomePages/fronttScreen.dart';
 import 'package:ecommerce_app/View/HomePages/profile_screen.dart';
+import 'package:ecommerce_app/View/logout_user.dart';
 import 'package:ecommerce_app/viewModel/homeScreenProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,7 @@ class _HomeScreemState extends State<HomeScreem> {
     FeatureListScreen(),
     CartScreen(),
     Text('Seach bar abhi nhi lga hai'),
-    ProfileScreen(),
+    LogoutUserScreen()
   ];
   @override
   Widget build(BuildContext context) {

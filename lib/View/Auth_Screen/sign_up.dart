@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Services/Auth.services.dart';
 import 'package:ecommerce_app/View/Auth_Screen/sign_in.dart';
 import 'package:ecommerce_app/Widget/myBtn.dart';
 import 'package:ecommerce_app/Widget/social_icon.dart';
@@ -73,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             builder: (context, authProvider, index) {
                           return TextFormField(
                             controller: passwordController,
-                            obscureText: !authProvider.Visible,
+                            obscureText: !authProvider.visible,
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(10),
                               hintText: 'Password',
@@ -85,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   authProvider
                                       .toggleVisibility(); // Toggle visibility
                                 },
-                                child: Icon(authProvider.Visible
+                                child: Icon(authProvider.visible
                                     ? Icons.visibility
                                     : Icons
                                         .visibility_off), // Change icon based on visibility
@@ -125,37 +126,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         //     return null;
                         //   },
                         // ),
-
-                        MyBtn(
-                            title: 'Create Account',
-                            isloading: isloading,
-                            ontap: () {
-                              if (_keyform.currentState!.validate()) {
-                                setState(() {
-                                  isloading = true;
-                                });
-                                auth
-                                    .createUserWithEmailAndPassword(
-                                        email: emailController.text.toString(),
-                                        password:
-                                            passwordController.text.toString())
-                                    .then((value) {
-                                  setState(() {
-                                    isloading = false;
+                        Consumer<AuthenticationProvider>(
+                          builder: (context, authProvider, _) => MyBtn(
+                              title: 'Create Account',
+                              isloading: authProvider.isloading,
+                              ontap: () {
+                                if (_keyform.currentState!.validate()) {
+                                  authProvider.setloading(true);
+                                  AuthServices()
+                                      .createUser(
+                                          emailController.text.toString(),
+                                          passwordController.text.toString())
+                                      .then((value) {
+                                    authProvider.setloading(false);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignIn()));
+                                  }).onError((error, stackTrace) {
+                                    authProvider.setloading(false);
+                                    Utility().Mytoast(error.toString());
                                   });
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SignIn()));
-                                }).onError((error, stackTrace) {
-                                  setState(() {
-                                    isloading = false;
-                                  });
-                                  Utility().Mytoast(error.toString());
-                                });
-                              }
-                            }),
+                                }
+                              }),
+                        ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
