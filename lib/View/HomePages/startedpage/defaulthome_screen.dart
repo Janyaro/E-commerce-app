@@ -4,7 +4,7 @@ import 'package:ecommerce_app/View/HomePages/shop_page.dart';
 import 'package:ecommerce_app/Widget/card_component.dart';
 import 'package:ecommerce_app/Widget/itemCarousal.dart';
 import 'package:ecommerce_app/Widget/slider_image.dart';
-import 'package:ecommerce_app/Widget/small_card.dart';
+import 'package:ecommerce_app/Widget/description_card.dart';
 import 'package:flutter/material.dart';
 
 class DefaultHomeScreen extends StatefulWidget {
