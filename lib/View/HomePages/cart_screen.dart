@@ -76,82 +76,6 @@ class _CartScreenState extends State<CartScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.location_on),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.01,
-                      ),
-                      const Text(
-                        'Delivery Address',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
-                  Row(
-                    children: [
-                      Card(
-                        elevation: 3,
-                        child: Container(
-                          width: 210,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const ListTile(
-                            title: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Address ',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Icon(
-                                  Icons.edit_note,
-                                  size: 20,
-                                  color: Colors.black,
-                                ),
-                              ],
-                            ),
-                            subtitle: Text(
-                              maxLines: 2,
-                              "216 St Paul's Rd, London N1 2LL, UK Contact:  +44-784232",
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Card(
-                        elevation: 3,
-                        child: Container(
-                          width: 130,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Center(
-                              child: Icon(
-                            Icons.add_circle_outline_sharp,
-                            size: 45,
-                          )),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
                   const Padding(
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
@@ -161,11 +85,11 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 4,
                   ),
                   Expanded(
                     child: ListView.builder(
-                      reverse: true,
+                      reverse: false,
                       itemCount: fetchedData!.length,
                       itemBuilder: (context, index) {
                         var item = fetchedData![index];
